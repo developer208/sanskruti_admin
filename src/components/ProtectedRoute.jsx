@@ -25,35 +25,35 @@ const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
     }
     return null; // Cookie not found
   }
-  useEffect(() => {
-    console.log("called");
-    dispatch(
-      loadUser({
-        cookie: getCookie(),
-      })
-    );
-  }, []);
+  // useEffect(() => {
+  //   console.log("called");
+  //   dispatch(
+  //     loadUser({
+  //       cookie: getCookie(),
+  //     })
+  //   );
+  // }, []);
   return (
     <Fragment>
       <Navbar />
       <div className=" flex w-[full] bg-[#edf2f4] opacity-80  ">
         <Sidebar />
-        {loading === false && isAuthenticate === true ? (
-          <Route
-            {...rest}
-            render={(props) => {
-              if (!isAuthenticate) {
-                return <Redirect to="/" />;
-              } else if (isAdmin === true && loaduser.role === "USER") {
-                return <Redirect to="/" />;
-              } else {
-                return <Component {...props} />;
-              }
-            }}
-          ></Route>
-        ) : (
+        {/* {loading === false && isAuthenticate === true ? ( */}
+        <Route
+          {...rest}
+          render={(props) => {
+            // if (!isAuthenticate) {
+            //   return <Redirect to="/" />;
+            // } else if (isAdmin === true && loaduser.role === "USER") {
+            //   return <Redirect to="/" />;
+            // } else {
+            return <Component {...props} />;
+            // }
+          }}
+        ></Route>
+        {/* ) : (
           <Route exact path="/" component={SignInOne} />
-        )}
+        )} */}
       </div>
     </Fragment>
   );

@@ -17,36 +17,37 @@ const MyProfile = () => {
     (state) => state.user
   );
 
-  useEffect(() => {
-    const notify = (arg) => toast(`${arg}`);
-    if (message && type) {
-      if (type === "success") {
-        notify(message);
-        dispatch(clearState());
-        history.push("/");
-      } else {
-        notify(message);
-        dispatch(clearState());
-      }
-      dispatch(clearIsAuthenticate());
-    }
-  }, [dispatch, isAuthenticated, type, message, history]);
-  useEffect(() => {
-    const cookie = getCookie();
-    dispatch(
-      userProfile({
-        cookie,
-      })
-    );
-  }, []);
+  // useEffect(() => {
+  //   const notify = (arg) => toast(`${arg}`);
+  //   if (message && type) {
+  //     if (type === "success") {
+  //       notify(message);
+  //       dispatch(clearState());
+  //       history.push("/");
+  //     } else {
+  //       notify(message);
+  //       dispatch(clearState());
+  //     }
+  //     dispatch(clearIsAuthenticate());
+  //   }
+  // }, [dispatch, isAuthenticated, type, message, history]);
+  // useEffect(() => {
+  //   const cookie = getCookie();
+  //   dispatch(
+  //     userProfile({
+  //       cookie,
+  //     })
+  //   );
+  // }, []);
 
   function handleLogout() {
-    const accessToken = getCookie();
-    dispatch(
-      logOutUser({
-        cookie: accessToken,
-      })
-    );
+    history.push("/");
+    // const accessToken = getCookie();
+    // dispatch(
+    //   logOutUser({
+    //     cookie: accessToken,
+    //   })
+    // );
   }
 
   function getCookie() {

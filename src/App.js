@@ -70,7 +70,7 @@ function App() {
       <ToastContainer autoClose={2000} />
       <Switch>
         <Route exact path="/" component={SignInOne} />
-        <ProtectedRoute exact path="/home" isAdmin={true} component={Home} />
+        <ProtectedRoute exact path="/home" component={Home} />
         <ProtectedRoute exact path="/profile" component={MyProfile} />
         <ProtectedRoute exact path="/products" component={Products} />
         <ProtectedRoute exact path="/editproduct/:id" component={EditProduct} />

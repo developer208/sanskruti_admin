@@ -24,16 +24,17 @@ const SignInOne = () => {
   );
   const dispatch = useDispatch();
   function handleSubmit(e) {
-    e.preventDefault();
-    if (email !== "" && password !== "") {
-      const uniqueIdentity = checkType();
-      dispatch(
-        logInUserWithEmailOrNumber({
-          emailOrNumber: uniqueIdentity,
-          password,
-        })
-      );
-    }
+    history.push(redirect);
+    // e.preventDefault();
+    // if (email !== "" && password !== "") {
+    //   const uniqueIdentity = checkType();
+    //   dispatch(
+    //     logInUserWithEmailOrNumber({
+    //       emailOrNumber: uniqueIdentity,
+    //       password,
+    //     })
+    //   );
+    // }
   }
   function getCookie() {
     var name = "connect.sid".concat("=");
@@ -59,27 +60,30 @@ const SignInOne = () => {
 
   const redirect = location.search ? location.search.split("=")[1] : "/home";
 
-  useEffect(() => {
-    const notify = (arg) => toast(`${arg}`);
-    if (message && type) {
-      if (type === "success") {
-        if (isAuthenticated && role !== "USER") {
-          notify(message);
-          history.push(redirect);
-          dispatch(clearState());
-        } else {
-          notify("Role of USER is not allowed !");
-        }
-      } else {
-        notify(message);
-        dispatch(clearState());
-      }
-    }
-  }, [dispatch, type, message, history, isAuthenticate]);
+  // useEffect(() => {
+  //   const notify = (arg) => toast(`${arg}`);
+  //   history.push(redirect);
+  //   if (message && type) {
+  //     if (type === "success") {
+  //       if (isAuthenticated && role !== "USER") {
+  //         notify(message);
+  //         dispatch(clearState());
+  //       } else {
+  //         notify("Role of USER is not allowed !");
+  //       }
+  //     } else {
+  //       notify(message);
+  //       dispatch(clearState());
+  //     }
+  //   }
+  // }, [dispatch, type, message, history, isAuthenticate]);
   return (
     <section>
       <div className="flex items-center justify-center w-full h-[100vh]  ">
         <div className="w-[400px] border-[1px] p-2 ">
+          <h1 className="text-[red] font-bold ">
+            For project showcase Purpose only !! proceed - click on signin
+          </h1>
           <div className="mb-2 flex gap-x-2 justify-center">
             <img
               src="https://res.cloudinary.com/dqyvomyqy/image/upload/v1686160747/authorization_tkpfnm.png"
